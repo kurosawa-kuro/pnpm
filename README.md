@@ -1,7 +1,48 @@
 # pnpm
 
+Next.jsプロジェクトをpnpmで作成する手順をご説明します：
+
+1. create-next-appを使用した初期化：
+```bash
+pnpm create next-app my-nextjs-project
+```
+
+対話式の設定で以下の選択肢が表示されます：
+```bash
+Would you like to use TypeScript? › Yes
+Would you like to use ESLint? › Yes
+Would you like to use Tailwind CSS? › Yes
+Would you like to use `src/` directory? › Yes
+Would you like to use App Router? › Yes
+Would you like to customize the default import alias? › No
+```
+
+2. プロジェクトディレクトリに移動：
+```bash
+cd my-nextjs-project
+```
+
+3. 開発サーバーの起動：
+```bash
+pnpm dev
+```
+
+追加のパッケージが必要な場合は：
+```bash
+pnpm add パッケージ名
+```
+
+開発用パッケージの場合：
+```bash
+pnpm add -D パッケージ名
+```
+
+この設定で基本的なNext.jsプロジェクトの開発を始められます。
+
 
 CDKプロジェクトをpnpmで作成する手順をご説明します：
+
+
 
 1. 新規ディレクトリの作成と初期化：
 ```bash
