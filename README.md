@@ -68,67 +68,24 @@ pnpm add -D パッケージ名
 ```bash
 mkdir my-cdk-project
 cd my-cdk-project
-pnpm init
+
+cdk init app --language typescript
+
+rm -rf node_modules
+rm package-lock.json
+
+pnpm install
 ```
 
-2. 依存パッケージのインストール
-```bash
-# CDK関連
-pnpm add -D aws-cdk aws-cdk-lib constructs
-
-# TypeScript関連
-pnpm add -D typescript @types/node ts-node
 ```
-
-3. プロジェクト構造の作成
-```bash
-mkdir bin lib
-```
-
-### 設定ファイル
-1. tsconfig.json
-```json
-{
-  "compilerOptions": {
-    "target": "ES2020",
-    "module": "commonjs",
-    "lib": ["es2020"],
-    "declaration": true,
-    "strict": true,
-    "typeRoots": ["./node_modules/@types"]
-    // その他の設定は必要に応じて追加
-  },
-  "exclude": ["node_modules", "cdk.out"]
-}
-```
-
-2. package.json (scripts)
-```json
 {
   "scripts": {
-    "build": "tsc",
-    "watch": "tsc -w",
-    "cdk": "cdk",
-    "deploy": "cdk deploy",
-    "destroy": "cdk destroy"
+    "build": "pnpm run-script build",
+    "watch": "pnpm run-script watch",
+    "test": "pnpm run-script test",
+    "cdk": "cdk"
   }
 }
-```
-
-### 基本ファイル構造
-```
-my-cdk-project/
-├── bin/
-│   └── my-cdk-app.ts    # エントリーポイント
-├── lib/
-│   └── my-stack.ts      # スタック定義
-├── package.json
-└── tsconfig.json
-```
-
-### デプロイ
-```bash
-pnpm run deploy
 ```
 
 ## 注意事項
