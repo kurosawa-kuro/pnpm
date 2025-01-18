@@ -1,5 +1,67 @@
 # pnpm
 
+WSLとAmazon Linux 2023それぞれのpnpmインストール手順と、npmのアンインストール方法をご説明します。
+
+**WSLでのpnpmインストール**
+```bash
+# curlのインストール（なければ）
+sudo apt update
+sudo apt install curl
+
+# Node.jsをアンインストール（既存のnpmも削除される）
+sudo apt remove nodejs npm
+sudo apt autoremove
+
+# fnmを使ってNode.jsをインストール
+curl -fsSL https://fnm.vercel.app/install | bash
+source ~/.bashrc
+fnm install --lts
+
+# pnpmのインストール
+curl -fsSL https://get.pnpm.io/install.sh | sh -
+source ~/.bashrc
+```
+
+**Amazon Linux 2023でのpnpmインストール**
+```bash
+# Node.jsをアンインストール（既存のnpmも削除される）
+sudo dnf remove nodejs npm
+sudo dnf clean all
+
+# Node.jsリポジトリの追加とインストール
+curl -fsSL https://rpm.nodesource.com/setup_lts.x | sudo bash -
+sudo dnf install -y nodejs
+
+# pnpmのインストール
+curl -fsSL https://get.pnpm.io/install.sh | sh -
+source ~/.bashrc
+```
+
+**npmの手動アンインストール（必要な場合）**
+```bash
+# npmのグローバルパッケージの確認
+npm list -g --depth=0
+
+# グローバルパッケージの削除
+sudo npm uninstall -g パッケージ名
+
+# npmの完全削除
+sudo rm -rf /usr/local/bin/npm
+sudo rm -rf /usr/local/lib/node_modules/npm
+sudo rm -rf ~/.npm
+```
+
+インストール後の確認：
+```bash
+pnpm --version
+node --version
+```
+
+注意点：
+- 既存のプロジェクトがある場合は、package-lock.jsonとnode_modulesを削除して`pnpm install`を実行
+- 環境変数のPATHが正しく設定されていることを確認
+- WSLの場合、必要に応じて`~/.bashrc`の代わりに`~/.zshrc`を使用
+
 Next.jsプロジェクトをpnpmで作成する手順をご説明します：
 
 1. create-next-appを使用した初期化：
