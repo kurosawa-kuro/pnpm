@@ -80,10 +80,24 @@ pnpm install
 ```
 {
   "scripts": {
-    "build": "pnpm run-script build",
-    "watch": "pnpm run-script watch",
-    "test": "pnpm run-script test",
+    "build": "tsc",
+    "watch": "tsc -w",
+    "test": "jest",
     "cdk": "cdk"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.8",
+    "@types/node": "20.9.1",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.1",
+    "aws-cdk": "2.114.1",
+    "ts-node": "^10.9.1",
+    "typescript": "~5.2.2"
+  },
+  "dependencies": {
+    "aws-cdk-lib": "2.114.1",
+    "constructs": "^10.0.0",
+    "source-map-support": "^0.5.21"
   }
 }
 ```
